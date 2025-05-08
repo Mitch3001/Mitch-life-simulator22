@@ -1,3 +1,5 @@
+The React app. ADE is a game about real life in which you can develop and increase income, buy cars and real estate, but keep in mind, not everything is so simple;)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
