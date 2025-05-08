@@ -1,0 +1,1012 @@
+/* Глобальные стили */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* Кнопки */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Небольшое увеличение при наведении */
+}
+
+/* Расположение кнопок горизонтально */
+.buttons {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 10px; /* Расстояние между кнопками */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Всплывающие окна */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Полная ширина экрана */
+  height: 100%; /* Полная высота экрана */
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  z-index: 10;
+  overflow-y: auto; /* Прокрутка при необходимости */
+  opacity: 0; /* Начальная прозрачность */
+  animation: fadeIn 0.5s ease forwards; /* Плавное появление */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+/* Закрытие окна */
+.modal.fade-out {
+  animation: fadeOut 0.5s ease forwards; /* Плавное исчезновение */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Содержимое модального окна */
+.modal-content {
+  max-width: 90%; /* Максимальная ширина содержимого */
+  margin: 0 auto; /* Центрирование содержимого */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Карточки для недвижимости и автомобилей */
+.property-list,
+.car-list,
+.owned-properties,
+.owned-cars {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 20px; /* Расстояние между карточками */
+  flex-wrap: wrap; /* Перенос на новую строку, если не хватает места */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+.property-card,
+.car-card,
+.owned-property,
+.owned-car {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: 120px; /* Ограничение ширины карточки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.property-card img,
+.car-card img,
+.owned-property img,
+.owned-car img {
+  width: 80px; /* Ограничение ширины изображения */
+  height: 80px; /* Ограничение высоты изображения */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  border-radius: 5px;
+}
+
+/* Диалоги персонажей */
+.character-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.character-dialog img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Кнопка закрытия */
+.modal button {
+  margin-top: 10px; /* Отступ сверху */
+  align-self: center; /* Центрирование кнопки */
+}
+
+/* Стили для списка акций */
+.stock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Расстояние между карточками */
+  margin-bottom: 20px;
+}
+
+.stock-card {
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.stock-card img {
+  width: 60px; /* Ширина круглой фотографии */
+  height: 60px; /* Высота круглой фотографии */
+  border-radius: 50%; /* Круглая форма */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  margin-right: 15px; /* Отступ между фото и текстом */
+}
+
+.stock-info {
+  flex: 1; /* Занимает оставшееся пространство */
+}
+
+.stock-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.stock-info p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.stock-card button {
+  margin-left: auto; /* Кнопка справа */
+}
+
+/* Стили для списка акций */
+.stock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Расстояние между карточками */
+  margin-bottom: 20px;
+}
+
+.stock-card {
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.stock-card img {
+  width: 60px; /* Ширина круглой фотографии */
+  height: 60px; /* Высота круглой фотографии */
+  border-radius: 50%; /* Круглая форма */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  margin-right: 15px; /* Отступ между фото и текстом */
+}
+
+.stock-info {
+  flex: 1; /* Занимает оставшееся пространство */
+}
+
+.stock-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.stock-info p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.stock-card button {
+  margin-left: auto; /* Кнопка справа */
+}
+
+/* Стили для купленных акций */
+.owned-stocks-container {
+  display: flex;
+  overflow-x: auto; /* Горизонтальная прокрутка */
+  gap: 10px; /* Расстояние между иконками */
+  padding: 10px 0;
+}
+
+.owned-stock {
+  flex: none; /* Фиксированный размер */
+  width: 120px; /* Ширина иконки */
+  text-align: center; /* Центрирование содержимого */
+}
+
+.owned-stock img {
+  width: 80px; /* Размер изображения */
+  height: 80px; /* Размер изображения */
+  border-radius: 50%; /* Круглая форма */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  margin-bottom: 5px; /* Отступ между изображением и текстом */
+}
+
+.owned-stock p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.owned-stock button {
+  margin-top: 5px; /* Отступ сверху */
+}
+
+/* Стили для кнопки Add $10 */
+button {
+  background-color: #28a745; /* Зеленый цвет */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #218838; /* Темно-зеленый при наведении */
+  transform: scale(1.05); /* Небольшое увеличение */
+}
+
+
+
+/* Стили для контейнера большой кнопки */
+.add-money-container {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  margin-top: 20px; /* Отступ сверху */
+}
+
+/* Стили для большой кнопки */
+.add-money-button {
+  background-color: #28a745; /* Зеленый цвет */
+  color: white;
+  border: none;
+  padding: 15px 30px; /* Увеличенные отступы */
+  font-size: 1.5rem; /* Больший размер текста */
+  border-radius: 10px; /* Закругленные углы */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Тень для объема */
+}
+
+.add-money-button:hover {
+  background-color: #218838; /* Темно-зеленый при наведении */
+  transform: scale(1.1); /* Небольшое увеличение */
+}
+
+/* Стили для основных кнопок */
+.buttons {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 10px; /* Расстояние между кнопками */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Небольшое увеличение при наведении */
+}
+
+/* Глобальные стили */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Анимация переливания цветов */
+@keyframes rainbow-text {
+  0% {
+    color: #ff0000; /* Красный */
+  }
+  14% {
+    color: #ffa500; /* Оранжевый */
+  }
+  28% {
+    color: #ffff00; /* Желтый */
+  }
+  42% {
+    color: #008000; /* Зеленый */
+  }
+  57% {
+    color: #0000ff; /* Синий */
+  }
+  71% {
+    color: #4b0082; /* Индиго */
+  }
+  85% {
+    color: #ee82ee; /* Фиолетовый */
+  }
+  100% {
+    color: #ff0000; /* Красный */
+  }
+}
+
+/* Применение анимации ко всем текстовым элементам */
+h1,
+p,
+button,
+.stock-info h3,
+.stock-info p,
+.owned-stock p {
+  animation: rainbow-text 15s infinite linear; /* Плавное переливание каждые 15 секунд */
+}
+
+/* Кнопки */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Небольшое увеличение при наведении */
+}
+
+/* Расположение кнопок горизонтально */
+.buttons {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 10px; /* Расстояние между кнопками */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Большая кнопка Add $10 */
+.add-money-container {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  margin-top: 20px; /* Отступ сверху */
+}
+
+.add-money-button {
+  background-color: #28a745; /* Зеленый цвет */
+  color: white;
+  border: none;
+  padding: 15px 30px; /* Увеличенные отступы */
+  font-size: 1.5rem; /* Больший размер текста */
+  border-radius: 10px; /* Закругленные углы */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Тень для объема */
+}
+
+.add-money-button:hover {
+  background-color: #218838; /* Темно-зеленый при наведении */
+  transform: scale(1.1); /* Небольшое увеличение */
+}
+
+/* Всплывающие окна */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  width: 90%; /* Ширина окна */
+  max-width: 700px; /* Максимальная ширина */
+  max-height: 95vh; /* Максимальная высота */
+  overflow-y: auto; /* Прокрутка при необходимости */
+  opacity: 0; /* Начальная прозрачность */
+  animation: fadeIn 0.5s ease forwards; /* Плавное появление */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+/* Закрытие окна */
+.modal.fade-out {
+  animation: fadeOut 0.5s ease forwards; /* Плавное исчезновение */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+}
+
+/* Карточки для недвижимости и автомобилей */
+.property-list,
+.car-list,
+.owned-properties,
+.owned-cars {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 20px; /* Расстояние между карточками */
+  flex-wrap: wrap; /* Перенос на новую строку, если не хватает места */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+.property-card,
+.car-card,
+.owned-property,
+.owned-car {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: 120px; /* Ограничение ширины карточки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.property-card img,
+.car-card img,
+.owned-property img,
+.owned-car img {
+  width: 80px; /* Ограничение ширины изображения */
+  height: 80px; /* Ограничение высоты изображения */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  border-radius: 5px;
+}
+
+/* Стили для акций */
+.stock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Расстояние между карточками */
+  margin-bottom: 20px;
+}
+
+.stock-card {
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.stock-card img {
+  width: 60px; /* Ширина круглой фотографии */
+  height: 60px; /* Высота круглой фотографии */
+  border-radius: 50%; /* Круглая форма */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  margin-right: 15px; /* Отступ между фото и текстом */
+}
+
+.stock-info {
+  flex: 1; /* Занимает оставшееся пространство */
+}
+
+.stock-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.stock-info p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.stock-card button {
+  margin-left: auto; /* Кнопка справа */
+}
+
+/* Купленные акции */
+.owned-stocks-container {
+  display: flex;
+  overflow-x: auto; /* Горизонтальная прокрутка */
+  gap: 10px; /* Расстояние между иконками */
+  padding: 10px 0;
+}
+
+.owned-stock {
+  flex: none; /* Фиксированный размер */
+  width: 120px; /* Ширина иконки */
+  text-align: center; /* Центрирование содержимого */
+}
+
+.owned-stock img {
+  width: 80px; /* Размер изображения */
+  height: 80px; /* Размер изображения */
+  border-radius: 50%; /* Круглая форма */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  margin-bottom: 5px; /* Отступ между изображением и текстом */
+}
+
+.owned-stock p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.owned-stock button {
+  margin-top: 5px; /* Отступ сверху */
+}
+
+/* Диалоги персонажей */
+.character-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.character-dialog img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+  .modal {
+    width: 95%; /* Увеличиваем ширину на маленьких экранах */
+    max-width: none; /* Убираем ограничение по ширине */
+    padding: 15px; /* Уменьшаем отступы */
+    max-height: 90vh; /* Уменьшаем высоту для мобильных устройств */
+  }
+
+  .car-card,
+  .property-card {
+    width: 100px; /* Уменьшаем размер карточек */
+  }
+
+  .car-card img,
+  .property-card img {
+    width: 60px; /* Уменьшаем размер изображений */
+    height: 60px;
+  }
+}
+
+/* Глобальные стили */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: url('./assets/new-york.jpg') no-repeat center center fixed; /* Фоновое изображение */
+  background-size: cover; /* Растягиваем изображение на весь экран */
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Анимация переливания цветов */
+@keyframes rainbow-text {
+  0% {
+    color: #ff0000; /* Красный */
+  }
+  14% {
+    color: #ffa500; /* Оранжевый */
+  }
+  28% {
+    color: #ffff00; /* Желтый */
+  }
+  42% {
+    color: #008000; /* Зеленый */
+  }
+  57% {
+    color: #0000ff; /* Синий */
+  }
+  71% {
+    color: #4b0082; /* Индиго */
+  }
+  85% {
+    color: #ee82ee; /* Фиолетовый */
+  }
+  100% {
+    color: #ff0000; /* Красный */
+  }
+}
+
+/* Применение анимации ко всем текстовым элементам */
+h1,
+p,
+button,
+.stock-info h3,
+.stock-info p,
+.owned-stock p {
+  animation: rainbow-text 15s infinite linear; /* Плавное переливание каждые 15 секунд */
+}
+
+/* Кнопки */
+button {
+  background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон для кнопок */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Темнее при наведении */
+  transform: scale(1.05); /* Небольшое увеличение при наведении */
+}
+
+/* Расположение кнопок горизонтально */
+.buttons {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 10px; /* Расстояние между кнопками */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Большая кнопка Add $10 */
+.add-money-container {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  margin-top: 20px; /* Отступ сверху */
+}
+
+.add-money-button {
+  background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+  color: white;
+  border: none;
+  padding: 15px 30px; /* Увеличенные отступы */
+  font-size: 1.5rem; /* Больший размер текста */
+  border-radius: 10px; /* Закругленные углы */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Тень для объема */
+}
+
+.add-money-button:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Темнее при наведении */
+  transform: scale(1.1); /* Небольшое увеличение */
+}
+
+/* Всплывающие окна */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  width: 90%; /* Ширина окна */
+  max-width: 700px; /* Максимальная ширина */
+  max-height: 95vh; /* Максимальная высота */
+  overflow-y: auto; /* Прокрутка при необходимости */
+  opacity: 0; /* Начальная прозрачность */
+  animation: fadeIn 0.5s ease forwards; /* Плавное появление */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  z-index: 5;
+}
+
+/* Закрытие окна */
+.modal.fade-out {
+  animation: fadeOut 0.5s ease forwards; /* Плавное исчезновение */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+}
+
+/* Карточки для недвижимости и автомобилей */
+.property-list,
+.car-list,
+.owned-properties,
+.owned-cars {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 20px; /* Расстояние между карточками */
+  flex-wrap: wrap; /* Перенос на новую строку, если не хватает места */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+.property-card,
+.car-card,
+.owned-property,
+.owned-car {
+  background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: 120px; /* Ограничение ширины карточки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.property-card img,
+.car-card img,
+.owned-property img,
+.owned-car img {
+  width: 80px; /* Ограничение ширины изображения */
+  height: 80px; /* Ограничение высоты изображения */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  border-radius: 5px;
+}
+
+/* Стили для акций */
+.stock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Расстояние между карточками */
+  margin-bottom: 20px;
+}
+
+.stock-card {
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+  background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.stock-card img {
+  width: 60px; /* Ширина круглой фотографии */
+  height: 60px; /* Высота круглой фотографии */
+  border-radius: 50%; /* Круглая форма */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  margin-right: 15px; /* Отступ между фото и текстом */
+}
+
+.stock-info {
+  flex: 1; /* Занимает оставшееся пространство */
+}
+
+.stock-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.stock-info p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.stock-card button {
+  margin-left: auto; /* Кнопка справа */
+}
+
+/* Купленные акции */
+.owned-stocks-container {
+  display: flex;
+  overflow-x: auto; /* Горизонтальная прокрутка */
+  gap: 10px; /* Расстояние между иконками */
+  padding: 10px 0;
+}
+
+.owned-stock {
+  flex: none; /* Фиксированный размер */
+  width: 120px; /* Ширина иконки */
+  text-align: center; /* Центрирование содержимого */
+}
+
+.owned-stock img {
+  width: 80px; /* Размер изображения */
+  height: 80px; /* Размер изображения */
+  border-radius: 50%; /* Круглая форма */
+  object-fit: cover; /* Сохранение пропорций изображения */
+  margin-bottom: 5px; /* Отступ между изображением и текстом */
+}
+
+.owned-stock p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.owned-stock button {
+  margin-top: 5px; /* Отступ сверху */
+}
+
+/* Диалоги персонажей */
+.character-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.character-dialog img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+  .modal {
+    width: 95%; /* Увеличиваем ширину на маленьких экранах */
+    max-width: none; /* Убираем ограничение по ширине */
+    padding: 15px; /* Уменьшаем отступы */
+    max-height: 90vh; /* Уменьшаем высоту для мобильных устройств */
+  }
+
+  .car-card,
+  .property-card {
+    width: 100px; /* Уменьшаем размер карточек */
+  }
+
+  .car-card img,
+  .property-card img {
+    width: 60px; /* Уменьшаем размер изображений */
+    height: 60px;
+  }
+}
+
+/* Модальное окно */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)); /* Полупрозрачный фон */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  width: 90%; /* Ширина окна */
+  max-width: 700px; /* Максимальная ширина */
+  max-height: 95vh; /* Максимальная высота */
+  overflow-y: auto; /* Прокрутка при необходимости */
+  opacity: 0; /* Начальная прозрачность */
+  animation: fadeIn 0.5s ease forwards; /* Плавное появление */
+  backdrop-filter: blur(5px); /* Эффект размытия фона */
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Оверлей */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  z-index: 5;
+}
